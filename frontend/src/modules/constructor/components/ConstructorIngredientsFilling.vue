@@ -12,7 +12,7 @@
           ingredient.name
         }}</span>
 
-        <constructor-ingredient-counter
+        <app-counter
           @inc="inc($event, ingredient)"
           @dec="dec($event, ingredient)"
         />
@@ -24,7 +24,7 @@
 export default {};
 </script>
 <script setup>
-import ConstructorIngredientCounter from "@/modules/constructor/components/ConstructorIngredientCounter.vue";
+import AppCounter from "@/common/components/AppCounter.vue";
 
 defineProps({
   ingredients: {
