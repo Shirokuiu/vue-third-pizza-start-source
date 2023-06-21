@@ -1,10 +1,6 @@
 <template>
-  <view-home />
+  <router-view />
 </template>
-
-<script setup>
-import ViewHome from "@/views/ViewHome.vue";
-</script>
 
 <script>
 export default {};

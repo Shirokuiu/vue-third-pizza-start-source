@@ -1,4 +1,5 @@
 <template>
+  <router-view />
   <layout-header />
   <main class="content">
     <constructor-module />
