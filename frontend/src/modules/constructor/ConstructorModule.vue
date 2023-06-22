@@ -11,14 +11,21 @@
       v-model="pizza.size"
       :sizes="normalizedSizes"
     />
-
-    <constructor-ingredients
-      v-model:selected-sauce="pizza.sauce"
-      :sauces="normalizedSauces"
-      :ingredients="normalizedIngredients"
-      @inc-ingredient="incIngredient"
-      @dec-ingredient="decIngredient"
-    />
+    <constructor-ingredients>
+      <template #sauce>
+        <constructor-ingredients-sauce
+          v-model="pizza.sauce"
+          :sauces="normalizedSauces"
+        />
+      </template>
+      <template #ingredients>
+        <constructor-ingredients-filling
+          :ingredients="normalizedIngredients"
+          @inc="incIngredient"
+          @dec="decIngredient"
+        />
+      </template>
+    </constructor-ingredients>
 
     <constructor-result v-model:name="pizza.name" :pizza="pizza" />
   </div>
@@ -42,6 +49,8 @@ import { normalizeSauces } from "@/modules/constructor/helpers/normalize-sauces"
 import { normalizeIngredients } from "@/modules/constructor/helpers/normalize-ingredients";
 import { incIngredientHelper } from "@/modules/constructor/helpers/inc-ingredient-helper";
 import { decIngredientHelper } from "@/modules/constructor/helpers/dec-ingredient-helper";
+import ConstructorIngredientsSauce from "@/modules/constructor/components/ConstructorIngredientsSauce.vue";
+import ConstructorIngredientsFilling from "@/modules/constructor/components/ConstructorIngredientsFilling.vue";
 
 const normalizedDoughs = normalizeDoughs(dougs);
 const normalizedSizes = normalizeSizes(sizes);
